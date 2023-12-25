@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/style/style_for_practice_5_task_6.css">
+    <title>{{ page_title }}</title>
+</head>
+
+<body>
+
+{% if users %}
+
+<h1>Все пользователи:</h1>
+
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Имя</th>
+            <th>Email</th>
+            <th>Password</th>
+        </tr>
+
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.password }}</td>
+            </tr>
+            {% endfor %}
+    </table>
+
+    <a href="{{ url_for('add_user_html') }}">
+        <button>
+            Добавить пользователя
+        </button>
+    </a>
+
+{% elif not users %}
+
+<h1>Пользователи отсувуют в базе данных</h1>
+
+{% endif %}
+
+</body>
+
+</html>
